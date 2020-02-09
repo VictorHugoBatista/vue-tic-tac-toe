@@ -5,6 +5,23 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    board: [
+      [
+        false,
+        false,
+        false,
+      ],
+      [
+        false,
+        false,
+        false,
+      ],
+      [
+        false,
+        false,
+        false,
+      ],
+    ],
   },
   mutations: {
   },
