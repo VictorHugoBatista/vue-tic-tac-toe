@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <b-row v-for="(row, rowNumber) in this.$store.state.board" v-bind:key="rowNumber">
-      <b-col v-for="(button, buttonNumber) in row" v-bind:key="buttonNumber">
+  <div class="board">
+    <b-row no-gutters class="board-row"
+      v-for="(row, rowNumber) in this.$store.state.board" v-bind:key="rowNumber">
+      <b-col class="board-col" v-for="(button, buttonNumber) in row" v-bind:key="buttonNumber">
         <BoardButton :selection="button" />
       </b-col>
     </b-row>
@@ -20,4 +21,21 @@ export default {
 </script>
 
 <style lang="scss">
+.board {
+  .board-row {
+    border-bottom: 4px solid black;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .board-col {
+    border-right: 4px solid black;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
 </style>
