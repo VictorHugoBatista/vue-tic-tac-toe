@@ -23,7 +23,7 @@ export default {
 <style lang="scss">
 .board {
   .board-row {
-    border-bottom: 2px solid black;
+    border-bottom: 4px solid black;
 
     &:last-child {
       border-bottom: none;
@@ -31,7 +31,7 @@ export default {
   }
 
   .board-col {
-    border-right: 2px solid black;
+    border-right: 4px solid black;
 
     &:last-child {
       border-right: none;

@@ -8,8 +8,8 @@ export default new Vuex.Store({
     board: [
       [
         false,
-        false,
-        false,
+        'X',
+        'O',
       ],
       [
         false,
@@ -18,7 +18,7 @@ export default new Vuex.Store({
       ],
       [
         false,
-        false,
+        'X',
         false,
       ],
     ],
