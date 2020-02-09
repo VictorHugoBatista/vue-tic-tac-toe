@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="board-button">
     button
   </div>
 </template>
@@ -11,4 +11,8 @@ export default {
 </script>
 
 <style lang="scss">
+.board-button {
+  text-align: center;
+  padding: 15px;
+}
 </style>

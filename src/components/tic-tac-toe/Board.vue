@@ -1,6 +1,7 @@
 <template>
   <div class="board">
-    <b-row class="board-row" v-for="(row, rowNumber) in this.$store.state.board" v-bind:key="rowNumber">
+    <b-row no-gutters class="board-row"
+      v-for="(row, rowNumber) in this.$store.state.board" v-bind:key="rowNumber">
       <b-col class="board-col" v-for="(button, buttonNumber) in row" v-bind:key="buttonNumber">
         <BoardButton :selection="button" />
       </b-col>
