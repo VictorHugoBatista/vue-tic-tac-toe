@@ -1,13 +1,17 @@
 <template>
   <div>
-    board
+    <BoardButton />
   </div>
 </template>
 
 <script>
+import BoardButton from './BoardButton'
 
 export default {
-  name: 'Board'
+  name: 'Board',
+  components: {
+      BoardButton,
+  },
 }
 </script>
 
