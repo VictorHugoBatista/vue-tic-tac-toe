@@ -13,7 +13,6 @@ export default {
 
 <style lang="scss">
 .board-button {
-  font-family: 'Indie Flower', cursive;
   font-size: 40px;
   font-weight: bold;
   line-height: 0;
