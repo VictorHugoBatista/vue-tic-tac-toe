@@ -2,7 +2,8 @@
   <div class="board">
     <b-row no-gutters class="board-row"
       v-for="(row, rowNumber) in this.$store.state.board" v-bind:key="rowNumber">
-      <b-col class="board-col" v-for="(button, buttonNumber) in row" v-bind:key="buttonNumber">
+      <b-col class="board-col" v-for="(button, buttonNumber) in row" v-bind:key="buttonNumber"
+        v-on:click="markBoard(rowNumber, buttonNumber)">
         <BoardButton :selection="button" />
       </b-col>
     </b-row>
@@ -15,7 +16,14 @@ import BoardButton from './BoardButton'
 export default {
   name: 'Board',
   components: {
-      BoardButton,
+    BoardButton,
+  },
+  methods: {
+    markBoard(row, col) {
+      alert(row)
+      alert(col)
+      this.$store.commit('changeTurn')
+    },
   },
 }
 </script>

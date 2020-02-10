@@ -25,6 +25,9 @@ export default new Vuex.Store({
     ],
   },
   mutations: {
+    changeTurn(state) {
+      state.turn = 'O' === state.turn ? 'X' : 'O'
+    },
   },
   actions: {
   },
