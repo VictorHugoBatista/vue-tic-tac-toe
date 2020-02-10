@@ -1,7 +1,7 @@
 <template>
   <div class="board">
     <b-row no-gutters class="board-row"
-      v-for="(row, rowNumber) in this.$store.state.board" v-bind:key="rowNumber">
+      v-for="(row, rowNumber) in board" v-bind:key="rowNumber">
       <b-col class="board-col" v-for="(button, buttonNumber) in row" v-bind:key="buttonNumber"
         v-on:click="markBoard(rowNumber, buttonNumber)">
         <BoardButton :selection="button" />
@@ -20,9 +20,12 @@ export default {
   },
   methods: {
     markBoard(row, col) {
-      alert(row)
-      alert(col)
-      this.$store.commit('changeTurn')
+      this.$store.commit('selectBoardItem', {row, col})
+    },
+  },
+  computed: {
+    board() {
+      return this.$store.state.board
     },
   },
 }
