@@ -25,6 +25,7 @@ export default {
         .then(gameWinner => {
           if (gameWinner) {
             alert(`Player '${gameWinner}' won the game`)
+            this.$store.commit('clearBoard')
           }
         })
     },

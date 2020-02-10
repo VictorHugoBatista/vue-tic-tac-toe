@@ -3,26 +3,28 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const initialBoard = [
+  [
+    false,
+    false,
+    false,
+  ],
+  [
+    false,
+    false,
+    false,
+  ],
+  [
+    false,
+    false,
+    false,
+  ],
+];
+
 export default new Vuex.Store({
   state: {
     turn: 'O',
-    board: [
-      [
-        false,
-        false,
-        false,
-      ],
-      [
-        false,
-        false,
-        false,
-      ],
-      [
-        false,
-        false,
-        false,
-      ],
-    ],
+    board: [...initialBoard],
   },
   mutations: {
     selectBoardItem(state, {row, col}) {
@@ -32,6 +34,9 @@ export default new Vuex.Store({
     },
     changeTurn(state) {
       state.turn = 'O' === state.turn ? 'X' : 'O'
+    },
+    clearBoard(state) {
+      state.board = [...initialBoard]
     },
   },
   actions: {
