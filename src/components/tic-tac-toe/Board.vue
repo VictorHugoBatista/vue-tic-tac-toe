@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     markBoard(row, col) {
-      this.$store.commit('selectBoardItem', {row, col})
+      this.$store.dispatch('makeTurn', {row, col})
     },
   },
   computed: {

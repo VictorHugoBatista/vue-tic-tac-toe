@@ -26,18 +26,24 @@ export default new Vuex.Store({
   },
   mutations: {
     selectBoardItem(state, {row, col}) {
+      const newRow = state.board[row].slice(0)
+      newRow[col] = state.turn
+      Vue.set(state.board, row, newRow)
+    },
+    changeTurn(state) {
+      state.turn = 'O' === state.turn ? 'X' : 'O'
+    },
+  },
+  actions: {
+    makeTurn({commit, state}, {row, col}) {
       if ('undefined' === typeof state.board[row] ||
         'undefined' === typeof state.board[row][col] ||
         state.board[row][col]) {
           return
       }
-      const newRow = state.board[row].slice(0)
-      newRow[col] = state.turn
-      Vue.set(state.board, row, newRow)
-      state.turn = 'O' === state.turn ? 'X' : 'O'
-    },
-  },
-  actions: {
+      commit('selectBoardItem', {row, col})
+      commit('changeTurn')
+    }
   },
   modules: {
   }
