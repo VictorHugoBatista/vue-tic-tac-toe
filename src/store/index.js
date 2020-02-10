@@ -9,17 +9,17 @@ export default new Vuex.Store({
     board: [
       [
         false,
-        'X',
-        'O',
-      ],
-      [
-        false,
         false,
         false,
       ],
       [
         false,
-        'X',
+        false,
+        false,
+      ],
+      [
+        false,
+        false,
         false,
       ],
     ],
@@ -31,10 +31,9 @@ export default new Vuex.Store({
         state.board[row][col]) {
           return
       }
-      const newBoard = state.board
-      newBoard[row][col] = state.turn
-      state.board = []
-      state.board = newBoard
+      const newRow = state.board[row].slice(0)
+      newRow[col] = state.turn
+      Vue.set(state.board, row, newRow)
       state.turn = 'O' === state.turn ? 'X' : 'O'
     },
   },
