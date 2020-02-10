@@ -35,15 +35,30 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    makeTurn({commit, state}, {row, col}) {
+    makeTurn({commit, state, dispatch}, {row, col}) {
       if ('undefined' === typeof state.board[row] ||
         'undefined' === typeof state.board[row][col] ||
         state.board[row][col]) {
           return
       }
       commit('selectBoardItem', {row, col})
+      const gameFinished = dispatch('verifyGameFinished', {row, col})
       commit('changeTurn')
-    }
+      return gameFinished
+    },
+    verifyGameFinished({state}, {row, col}) {
+      let completedRow = true,
+        completedCol = true;
+      for (let i = 0; i < 3; i++) {
+        if (state.turn !== state.board[i][col]) {
+          completedRow = false
+        }
+        if (state.turn !== state.board[row][i]) {
+          completedCol = false
+        }
+      }
+      return completedRow || completedCol ? state.turn : false
+    },
   },
   modules: {
   }

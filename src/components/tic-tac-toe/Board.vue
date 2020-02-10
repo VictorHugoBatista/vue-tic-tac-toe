@@ -22,6 +22,11 @@ export default {
   methods: {
     markBoard(row, col) {
       this.$store.dispatch('makeTurn', {row, col})
+        .then(gameWinner => {
+          if (gameWinner) {
+            alert(`Player '${gameWinner}' won the game`)
+          }
+        })
     },
   },
   computed: {
