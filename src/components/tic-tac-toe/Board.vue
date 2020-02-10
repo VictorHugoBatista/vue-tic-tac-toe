@@ -3,7 +3,8 @@
     <b-row no-gutters class="board-row"
       v-for="(row, rowNumber) in board" v-bind:key="rowNumber">
       <b-col class="board-col" v-for="(button, buttonNumber) in row" v-bind:key="buttonNumber"
-        v-on:click="markBoard(rowNumber, buttonNumber)">
+        v-on:click="markBoard(rowNumber, buttonNumber)"
+        v-bind:class="{empty: ! $store.state.board[rowNumber][buttonNumber]}">
         <BoardButton :selection="button" />
       </b-col>
     </b-row>
@@ -46,6 +47,10 @@ export default {
 
     &:last-child {
       border-right: none;
+    }
+
+    &.empty {
+      cursor: pointer;
     }
   }
 }
