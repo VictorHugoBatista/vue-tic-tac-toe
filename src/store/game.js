@@ -25,6 +25,7 @@ const createInitialBoard = () => {
 }
 
 export default {
+  namespaced: true,
   state: {
     turn: 'O',
     board: createInitialBoard(),

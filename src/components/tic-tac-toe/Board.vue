@@ -21,17 +21,17 @@ export default {
   },
   methods: {
     markBoard(row, col) {
-      this.$store.dispatch('makeTurn', {row, col})
+      this.$store.dispatch('game/makeTurn', {row, col})
         .then(gameWinner => {
           if (gameWinner) {
-            this.$store.commit('clearBoard')
+            this.$store.commit('game/clearBoard')
             alert(`Player '${gameWinner}' won the game`)
             return
           }
-          this.$store.dispatch('isBoardFull')
+          this.$store.dispatch('game/isBoardFull')
             .then(boardFull => {
               if (boardFull) {
-                this.$store.commit('clearBoard')
+                this.$store.commit('game/clearBoard')
                 alert(`Draw game`)
               }
             })
