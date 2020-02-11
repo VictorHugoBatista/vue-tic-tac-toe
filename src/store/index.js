@@ -81,8 +81,10 @@ export default new Vuex.Store({
     async isBoardFull({state}) {
       let boardFull = true
       for (let i = 0; i < 3; i++) {
-        if (!state.board[i][i].content) {
-          boardFull = false
+        for (let j = 0; j < 3; j++) {
+          if (! state.board[i][j].content) {
+            boardFull = false
+          }
         }
       }
       return boardFull
