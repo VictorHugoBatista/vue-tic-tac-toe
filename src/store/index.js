@@ -3,21 +3,31 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const boardItemDiagonal = {
+  isDiagonal: true,
+  content: false,
+}
+
+const boardItemNotDiagonal = {
+  isDiagonal: false,
+  content: false,
+}
+
 const initialBoard = [
   [
-    false,
-    false,
-    false,
+    {...boardItemDiagonal},
+    {...boardItemNotDiagonal},
+    {...boardItemDiagonal},
   ],
   [
-    false,
-    false,
-    false,
+    {...boardItemNotDiagonal},
+    {...boardItemDiagonal},
+    {...boardItemNotDiagonal},
   ],
   [
-    false,
-    false,
-    false,
+    {...boardItemDiagonal},
+    {...boardItemNotDiagonal},
+    {...boardItemDiagonal},
   ],
 ];
 
@@ -29,7 +39,7 @@ export default new Vuex.Store({
   mutations: {
     selectBoardItem(state, {row, col}) {
       const newRow = state.board[row].slice(0)
-      newRow[col] = state.turn
+      newRow[col].content = state.turn
       Vue.set(state.board, row, newRow)
     },
     changeTurn(state) {
@@ -43,7 +53,7 @@ export default new Vuex.Store({
     makeTurn({commit, state, dispatch}, {row, col}) {
       if ('undefined' === typeof state.board[row] ||
         'undefined' === typeof state.board[row][col] ||
-        state.board[row][col]) {
+        state.board[row][col].content) {
           return
       }
       commit('selectBoardItem', {row, col})
@@ -55,10 +65,10 @@ export default new Vuex.Store({
       let completedRow = true,
         completedCol = true;
       for (let i = 0; i < 3; i++) {
-        if (state.turn !== state.board[i][col]) {
+        if (state.turn !== state.board[i][col].content) {
           completedRow = false
         }
-        if (state.turn !== state.board[row][i]) {
+        if (state.turn !== state.board[row][i].content) {
           completedCol = false
         }
       }

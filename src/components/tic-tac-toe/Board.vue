@@ -4,8 +4,8 @@
       v-for="(row, rowNumber) in board" v-bind:key="rowNumber">
       <b-col class="board-col" v-for="(button, buttonNumber) in row" v-bind:key="buttonNumber"
         v-on:click="markBoard(rowNumber, buttonNumber)"
-        v-bind:class="{empty: ! $store.state.board[rowNumber][buttonNumber]}">
-        <BoardButton :selection="button" />
+        v-bind:class="{empty: ! button.content}">
+        <BoardButton :selection="button.content" />
       </b-col>
     </b-row>
   </div>
