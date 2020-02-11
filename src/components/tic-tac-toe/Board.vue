@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     board() {
-      return this.$store.state.board
+      return this.$store.state.game.board
     },
   },
 }

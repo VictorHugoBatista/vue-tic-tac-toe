@@ -6,7 +6,7 @@
       <Board />
       <div class="mt-5 text-center">
         <h2 class="mb-0">Current player</h2>
-        <BoardButton :selection="this.$store.state.turn" />
+        <BoardButton :selection="this.$store.state.game.turn" />
       </div>
       <div class="text-center mt-5">
         <github-button class="mr-3" href="https://github.com/VictorHugoBatista">Follow</github-button>
