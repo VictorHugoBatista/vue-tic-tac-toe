@@ -3,32 +3,34 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const boardItem = {
-  content: false,
+const createInitialBoard = () => {
+  const boardItem = {
+    content: false,
+  }
+  const initialBoard = [
+    [
+      {...boardItem},
+      {...boardItem},
+      {...boardItem},
+    ],
+    [
+      {...boardItem},
+      {...boardItem},
+      {...boardItem},
+    ],
+    [
+      {...boardItem},
+      {...boardItem},
+      {...boardItem},
+    ],
+  ]
+  return initialBoard
 }
-
-const initialBoard = [
-  [
-    {...boardItem},
-    {...boardItem},
-    {...boardItem},
-  ],
-  [
-    {...boardItem},
-    {...boardItem},
-    {...boardItem},
-  ],
-  [
-    {...boardItem},
-    {...boardItem},
-    {...boardItem},
-  ],
-];
 
 export default new Vuex.Store({
   state: {
     turn: 'O',
-    board: [...initialBoard],
+    board: createInitialBoard(),
   },
   mutations: {
     selectBoardItem(state, {row, col}) {
@@ -40,7 +42,7 @@ export default new Vuex.Store({
       state.turn = 'O' === state.turn ? 'X' : 'O'
     },
     clearBoard(state) {
-      state.board = [...initialBoard]
+      state.board = createInitialBoard()
     },
   },
   actions: {
