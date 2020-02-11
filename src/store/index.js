@@ -3,31 +3,25 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const boardItemDiagonal = {
-  isDiagonal: true,
-  content: false,
-}
-
-const boardItemNotDiagonal = {
-  isDiagonal: false,
+const boardItem = {
   content: false,
 }
 
 const initialBoard = [
   [
-    {...boardItemDiagonal},
-    {...boardItemNotDiagonal},
-    {...boardItemDiagonal},
+    {...boardItem},
+    {...boardItem},
+    {...boardItem},
   ],
   [
-    {...boardItemNotDiagonal},
-    {...boardItemDiagonal},
-    {...boardItemNotDiagonal},
+    {...boardItem},
+    {...boardItem},
+    {...boardItem},
   ],
   [
-    {...boardItemDiagonal},
-    {...boardItemNotDiagonal},
-    {...boardItemDiagonal},
+    {...boardItem},
+    {...boardItem},
+    {...boardItem},
   ],
 ];
 
