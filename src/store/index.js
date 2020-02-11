@@ -46,18 +46,18 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    makeTurn({commit, state, dispatch}, {row, col}) {
+    async makeTurn({commit, state, dispatch}, {row, col}) {
       if ('undefined' === typeof state.board[row] ||
         'undefined' === typeof state.board[row][col] ||
         state.board[row][col].content) {
           return
       }
       commit('selectBoardItem', {row, col})
-      const gameFinished = dispatch('verifyGameFinished', {row, col})
+      const gameWinner = await dispatch('verifyGameFinished', {row, col})
       commit('changeTurn')
-      return gameFinished
+      return gameWinner
     },
-    verifyGameFinished({state}, {row, col}) {
+    async verifyGameFinished({state}, {row, col}) {
       let completedRow = true,
         completedCol = true,
         completeRow1 = true,
