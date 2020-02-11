@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <div class="container">
+      <h1 class="text-center">Tic tac toe in Vue</h1>
+      <Board />
+      <div class="mt-5 text-center">
+        <h2 class="mb-0">Current player</h2>
+        <BoardButton :selection="this.$store.state.game.turn" />
+      </div>
+      <div class="text-center mt-5">
+        <github-button class="mr-3" href="https://github.com/VictorHugoBatista">Follow</github-button>
+        <github-button data-icon="star" href="https://github.com/VictorHugoBatista/vue-tic-tac-toe">Star</github-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Board from './components/tic-tac-toe/Board'
+import BoardButton from './components/tic-tac-toe/BoardButton'
+import GithubButton from 'vue-github-button'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Board,
+    BoardButton,
+    GithubButton,
+  },
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  font-family: 'Indie Flower', cursive;
+}
+
+h1 {
+  margin: 50px 0;
 }
 </style>
