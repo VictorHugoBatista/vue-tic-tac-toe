@@ -63,16 +63,24 @@ export default new Vuex.Store({
     },
     verifyGameFinished({state}, {row, col}) {
       let completedRow = true,
-        completedCol = true;
-      for (let i = 0; i < 3; i++) {
+        completedCol = true,
+        completeRow1 = true,
+        completeRow2 = true
+      for (let i = 0, iinverse = 2; i < 3; i++, iinverse--) {
         if (state.turn !== state.board[i][col].content) {
           completedRow = false
         }
         if (state.turn !== state.board[row][i].content) {
           completedCol = false
         }
+        if (state.turn !== state.board[i][i].content) {
+          completeRow1 = false
+        }
+        if (state.turn !== state.board[iinverse][i].content) {
+          completeRow2 = false
+        }
       }
-      return completedRow || completedCol ? state.turn : false
+      return completedRow || completedCol || completeRow1 || completeRow2 ? state.turn : false
     },
   },
   modules: {
