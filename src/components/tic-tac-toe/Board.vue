@@ -24,9 +24,17 @@ export default {
       this.$store.dispatch('makeTurn', {row, col})
         .then(gameWinner => {
           if (gameWinner) {
-            alert(`Player '${gameWinner}' won the game`)
             this.$store.commit('clearBoard')
+            alert(`Player '${gameWinner}' won the game`)
+            return
           }
+          this.$store.dispatch('isBoardFull')
+            .then(boardFull => {
+              if (boardFull) {
+                this.$store.commit('clearBoard')
+                alert(`Draw game`)
+              }
+            })
         })
     },
   },

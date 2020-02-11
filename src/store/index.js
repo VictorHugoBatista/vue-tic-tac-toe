@@ -78,6 +78,15 @@ export default new Vuex.Store({
       }
       return completedRow || completedCol || completeRow1 || completeRow2 ? state.turn : false
     },
+    async isBoardFull({state}) {
+      let boardFull = true
+      for (let i = 0; i < 3; i++) {
+        if (!state.board[i][i].content) {
+          boardFull = false
+        }
+      }
+      return boardFull
+    },
   },
   modules: {
   }
